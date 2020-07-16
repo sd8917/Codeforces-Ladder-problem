@@ -1,28 +1,48 @@
-#include<iostream>
+#include<bits/stdc++.h>
+
+typedef long long int ll;
+
+#define pp pair<ll,ll>
+#define dbg printf("in\n");
+#define NL printf("\n");
+
+#define inf 1000000000000
+
 using namespace std;
-
-int fibonacci(int n)
-{
-    int F[n+1];
-
-    F[0]= 1;
-    F[1]= 2;
-
-    for(int i=2;i<=n;i++)
-        F[i]=F[i-1]+F[i-2];
-
-    return F[n];
-}
 
 int main()
 {
-    int n;
-    cout<<"Enter the value of n"<<endl;
+    //freopen("in.txt","r",stdin);
+    ll i,j,k;
+    ll n,m,x;
+
     cin>>n;
+    ll a[n];
 
-    cout<<"Required fibonacci number is ";
-    cout<<fibonacci(n);
+    for(i=0;i<n;i++)
+        cin>>a[i];
 
-    cout<<endl;
+    if(n<=2)
+    {
+        cout<<n;
+        return 0;
+    }
+
+    i=0;m=0;x=2;
+    while(i<=n-2)
+    {
+        if(a[i]+a[i+1]==a[i+2])
+            x++,i++;
+
+        else
+        {
+            m=max(m,x);
+            x=2;i++;
+        }
+    }
+
+    m=max(m,x);
+    cout<<m;
+
     return 0;
 }
